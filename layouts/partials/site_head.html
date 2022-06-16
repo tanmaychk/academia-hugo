@@ -127,7 +127,8 @@
         })(window, document, "clarity", "script", "{{ site.Params.microsoft_clarity }}");
       </script>
     {{ end }}
-    {{ if site.GoogleAnalytics }}
+    
+	{{ if site.GoogleAnalytics }}
       <!-- Global site tag (gtag.js) - Google Analytics -->
       <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.GoogleAnalytics }}"></script>
       <script>
@@ -136,9 +137,6 @@
         gtag('js', new Date());
         gtag('config', '{{ site.GoogleAnalytics }}');
       </script>
-      {{ if ($scr.Get "use_cdn") }}
-        {{ printf "<script async src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\"></script>" (printf $js.autotrack.url $js.autotrack.version) $js.autotrack.sri | safeHTML }}
-      {{ end }}
     {{ end }}
   {{ end }}
 
